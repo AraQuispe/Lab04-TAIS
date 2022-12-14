@@ -1,0 +1,39 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<head>
+    <title>Lista de Combos</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex flex-row justify-content-between align-items-center mb-3">
+            <h3>Combos</h3>
+            <a class="btn btn-primary" href="/crear_combo">Nuevo Combo</a>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Productos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for combo in combos %}
+                <tr>
+                    <th scope="row">{{ combo.id }}</th>
+                    <td>{{ combo.nombre }}</td>
+                    <td>{{ combo.description }}</td>
+                    <td>{{ combo.precio }}</td>
+                    <td>{{ combo.producto.all|join:", " }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+{% endblock %}
